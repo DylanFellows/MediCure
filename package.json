@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/DylanFellows/MediCure#readme",
   "dependencies": {
+    "angular-popeye": "^1.0.5",
     "express": "^4.16.4",
     "mysql2": "^1.6.1",
     "seed": "^0.4.4",

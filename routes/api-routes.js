@@ -9,14 +9,14 @@ module.exports = function (myApp) {
     const sequelize = new Sequelize('medicure_db', 'root', 'root', {
         host: 'localhost',
         dialect: 'mysql',
-       operatorsAliases: false,
-       define: {
-        timestamps: false
-    }
+        operatorsAliases: false,
+        define: {
+            timestamps: false
+        }
     });
 
     // Gets the product infomration from the db, sorting on product name within department name
-    myApp.get('/api/professionals', function (req, res) {
+    myApp.get('/api/professionals/', function (req, res) {
         db.Professional.findAll(
             {
                 order: [
@@ -31,17 +31,36 @@ module.exports = function (myApp) {
         });
     });
 
+    myApp.post('/api/PostProfessional/:prof_firstName&:prof_lastName&:profession&:workplace&:languages&:fac_phone&:address&:gender', function (req, res) {
+        console.log("Posted new data!");
+        let postProfessionalQuery = "INSERT INTO professionals(prof_firstName, prof_lastName, profession, workplace, languages, fac_phone, address, gender) VALUES" + '(:prof_firstName, :prof_lastName, :profession, :workplace, :languages, :fac_phone, :address, :gender)';
+        sequelize.query(postProfessionalQuery,
+            {
+                replacements: {
+                    prof_firstName: req.params.prof_firstName, prof_lastName: req.params.prof_lastName, profession: req.params.profession, workplace: req.params.workplace, languages: req.params.languages, fac_phone: req.params.fac_phone, address: req.params.address, gender: req.params.gender
+                },
+                type: sequelize.QueryTypes.INSERT
+            }
+        ).then(function (rows) {
+            console.log(rows);
+            res.json(rows)
+        }).catch(function (error) {
+            console.log(error);
+            res.json({ error: error });
+        });
+    })
 
-     // Update existing dealer in db 
-     myApp.put('/api/UpdateProfessional/:id&:prof_firstName&:prof_lastName&:profession&:workplace&:languages&:fac_phone', function (req, res) {
+
+    // Update existing dealer in db 
+    myApp.put('/api/UpdateProfessional/:id&:prof_firstName&:prof_lastName&:profession&:workplace&:languages&:fac_phone&:address&:gender', function (req, res) {
         console.log("Made it to update backend");
-        let updateDealerQuery = 'UPDATE Professionals SET prof_firstName = :prof_firstName, profession=:profession, workplace=:workplace, languages=:languages, fac_phone=:fac_phone ' +
+        let updateProfessionalQuery = 'UPDATE Professionals SET prof_firstName = :prof_firstName, profession=:profession, workplace=:workplace, languages=:languages, fac_phone=:fac_phone, address=:address, gender=:gender ' +
             'WHERE id=:id';
-        sequelize.query(updateDealerQuery,
+        sequelize.query(updateProfessionalQuery,
             {
                 replacements: {
                     id: req.params.id, prof_firstName: req.params.prof_firstName, prof_lastName: req.params.prof_lastName, profession: req.params.profession, workplace: req.params.workplace, languages: req.params.languages,
-                    fac_phone: req.params.fac_phone
+                    fac_phone: req.params.fac_phone, address: req.params.address, gender: req.params.gender
                 },
                 type: sequelize.QueryTypes.UPDATE
             }
@@ -53,4 +72,23 @@ module.exports = function (myApp) {
             res.json({ error: error });
         });
     });
-}
+
+    myApp.delete('/api/DeleteProfessional/:id', function (req, res) {
+        console.log("Made it to the backend delete.");
+        let deleteProfessionalQuery = 'DELETE FROM Professionals ' + 'WHERE id=:id';
+        sequelize.query(deleteProfessionalQuery,
+            {
+                replacements: {
+                    id: req.params.id
+                },
+                type: sequelize.QueryTypes.DELETE
+            }
+        ).then(function (response) {
+            res.json(response);
+        }).catch(function (error) {
+            console.log("ERROR WHILE ATTEMPTING TO DELETE PROFESSIONAL");
+            console.log(error);
+            res.json({ error: error });
+        });
+    });
+}; 

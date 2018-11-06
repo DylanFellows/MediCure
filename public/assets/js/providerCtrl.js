@@ -1,9 +1,7 @@
-app.controller("ProviderCtrl", function($scope, providerService){
+app.controller("ProviderCtrl", function($scope, providerService, $http){
     
     providerService.query(function(data){
-        console.log("helooooo");
         $scope.providers = data;
-        console.log(data);
     }, function(err){
         console.error("Error occured: ", err);
     });
@@ -17,6 +15,8 @@ app.controller("ProviderCtrl", function($scope, providerService){
         $scope.facility = data.workplace;
         $scope.languages = data.languages;
         $scope.fac_phone = data.fac_phone;
-        console.log($scope.lastName);
+        $scope.address = data.address;
+        $scope.gender = data.gender;
     };
+
 });

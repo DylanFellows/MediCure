@@ -17,7 +17,7 @@ html, body{
     transform: translate(250%, -100%);
 }
 
-#para {
+#para1, #para2 {
     font-size: 1.3em;
 }
 
@@ -26,6 +26,13 @@ html, body{
 }
 
 #div1img {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+}
+
+#homeImg {
     position: relative;
     text-align: center;
     width: 100%;
@@ -46,20 +53,21 @@ html, body{
     width: 50%;
 }
 
-.ng-table-responsive
-td:before {
-    white-space: nowrap;
-    text-align: left;
-    font-weight: italic;
-}
-
 .striped {
     background-color:whitesmoke;
+}
+
+.nameSearch, .profSearch, .facSearch {
+    text-align: center;
 }
 
 @media screen and (max-width: 414px) {
     #leftLogo, #rightLogo {
         display:none;
+    }
+    
+    #profDiv {
+        width:100%;
     }
 }
 
