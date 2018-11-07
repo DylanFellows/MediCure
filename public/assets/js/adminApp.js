@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('#homeBtn').on('click', function(){
-        window.location.href="http://localhost:8080/"
+        window.location.href="https://ancient-dawn-20880.herokuapp.com/"
     });
 
     var id = '';
@@ -97,7 +97,7 @@ $(document).ready(function(){
         healthcare = $('#healthcareId').val();
         $.when(ajaxUpdateProfessional()).done(function (a1) {
             console.log("Inside the .when GET function.")
-            window.location.href="http://localhost:8080/AdminChanges";
+            window.location.href="https://ancient-dawn-20880.herokuapp.com/AdminChanges";
         });
     });
 
@@ -128,7 +128,7 @@ $(document).ready(function(){
         healthcare = $('#healthcareId').val();
         $.when(ajaxPostProfessional()).done(function(a1){
             console.log('Inside the .when POST function.')
-            window.location.href="http://localhost:8080/AdminChanges";
+            window.location.href="https://ancient-dawn-20880.herokuapp.com/AdminChanges";
         });
     });
 
@@ -148,7 +148,7 @@ $(document).ready(function(){
 
     $(".btnRemoveCls").on('click', function(){
         alert('Getting ready to delete from DB.');
-        window.location.href="http://localhost:8080/AdminChanges";
+        window.location.href="https://ancient-dawn-20880.herokuapp.com/AdminChanges";
         id= $('#id').val();
         ajaxDeleteProfessional()
     });

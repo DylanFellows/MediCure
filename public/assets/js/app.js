@@ -10,13 +10,13 @@ $(document).ready(function () {
     $('#contactLink').on('click', function () {
         $('.infoDiv').show();
         $('.profDiv').hide();
-        window.location.href = "http://localhost:8080/#!#contact"
+        window.location.href = "https://ancient-dawn-20880.herokuapp.com/#!#contact"
     })
 
     $('#aboutLink').on('click', function () {
         $('.infoDiv').show();
         $('.profDiv').hide();
-        window.location.href = "http://localhost:8080/#!#about";
+        window.location.href = "https://ancient-dawn-20880.herokuapp.com/#!#about";
     })
 
     $('#professionalView').on('click', function () {
@@ -30,7 +30,7 @@ $(document).ready(function () {
     })
 
     $('#adminPage').on('click', function () {
-        window.location.href = 'http://localhost:8080/AdminChanges';
+        window.location.href = 'https://ancient-dawn-20880.herokuapp.com/AdminChanges';
     })
 
     $(document).on('click', '.blah', function () {
