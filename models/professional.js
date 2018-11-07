@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    const Professional = sequelize.define('Professional', {
+    const professional = sequelize.define('Professional', {
         prof_firstName: {
             type: DataTypes.STRING,
             allowNull: false
@@ -41,5 +41,5 @@ module.exports = function (sequelize, DataTypes) {
           type: DataTypes.DATE
         }
     });
-    return Professional;
+    return professional;
 }

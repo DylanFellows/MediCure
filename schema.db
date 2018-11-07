@@ -3,15 +3,3 @@ DROP DATABASE IF EXISTS medicure_db;
 CREATE DATABASE medicure_db;
 
 USE medicure_db;
-
-CREATE TABLE professionals (
-	id INTEGER AUTO_INCREMENT NOT NULL,
-    prof_name VARCHAR(50) NOT NULL,
-	profession VARCHAR(50) NOT NULL,
-	workplace VARCHAR(100) NOT NULL,
-	languages VARCHAR(100) NOT NULL,
-	fac_phone VARCHAR(30) NOT NULL,
-	address VARCHAR(100) NOT NULL,
-	gender VARCHAR(10) NOT NULL,
-    PRIMARY KEY(id)
-);

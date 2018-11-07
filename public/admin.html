@@ -122,21 +122,26 @@
     Language(s) Spoken:
     <input id="languages" ng-model="languages" size="40" maxlength="40" placeholder="Provider Language(s)" autocomplete='off' /><br><br>
     Phone Number:
-    <input id="fac_phone" ng-model="fac_phone" size="40" maxlength="40" placeholder="Provider Phone" autocomplete='off' /><br><br>
+    <input id="fac_phone" class="phone" ng-model="fac_phone" size="40" maxlength="40" placeholder="Provider Phone" autocomplete='off' /><br><br>
     Address:
     <input id="addressId" ng-model="address" size="40" maxlength="40" placeholder="Provider Address" autocomplete='off' /><br><br>
     Gender:
     <input id="genderId" ng-model="gender" size="40" maxlength="40" placeholder="Provider Gender" autocomplete='off' /><br><br>
     <button class="btnCreateCls btn btn-primary">Create</button>
-    <button class="btnUpdateCls btn btn-success">Save</button>
+    <button class="btnPostCls btn btn-primary" style="display: none;">Post</button>
+    <button class="btnUpdateCls btn btn-success">Update</button>
+    <button class="btnSaveCls btn btn-success" style="display: none;">Save</button>
     <button class="btnDeleteCls btn btn-danger">Delete</button>
+    <button class="btnRemoveCls btn btn-danger" style="display: none;">Remove</button>
+    <button class="btnClearCls btn btn-warning">Clear</button>
+    <button class="btnCancel btn btn-dark">Cancel</button>
   </div>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>
 
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-resource.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-resource.js"></script>
 
   <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
 
@@ -156,6 +161,8 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+
+  <script src="./assets/js/jquery-input-mask-phone-number.min.js"></script>
 
   <script src="assets/js/adminApp.js"></script>
 </body>

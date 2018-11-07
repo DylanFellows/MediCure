@@ -3,7 +3,7 @@ app.controller("ProviderCtrl", function($scope, providerService, $http){
     providerService.query(function(data){
         $scope.providers = data;
     }, function(err){
-        console.error("Error occured: ", err);
+        console.log("Error occured: ", err);
     });
 
     $scope.processData = function(data){

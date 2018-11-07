@@ -21,6 +21,58 @@ $(document).ready(function(){
         $('#btnEdit').hide();
     });
 
+    $('.phone').usPhoneFormat({
+        format: 'xxx-xxx-xxxx',
+    })
+
+    $('.btnCreateCls').on('click', function(){
+        $('.btnPostCls').show();
+        $('.btnUpdateCls').hide();
+        $('.btnDeleteCls').hide();
+        $('.btnCreateCls').hide();
+    })
+
+    $('.btnUpdateCls').on('click', function(){
+        $('.btnSaveCls').show();
+        $('.btnUpdateCls').hide();
+        $('.btnDeleteCls').hide();
+        $('.btnCreateCls').hide();
+    })
+
+    $('.btnDeleteCls').on('click', function(){
+        $('.btnRemoveCls').show();
+        $('.btnUpdateCls').hide();
+        $('.btnDeleteCls').hide();
+        $('.btnCreateCls').hide();
+    })
+
+    $('.btnCancelCls').on('click', function(){
+        if($('btnCreateCls').style.display==="show"||$('btnSaveCls').style.display==='show'||$('btnRemoveCls').style.display==="show"){
+            $('.btnCreateCls').show();
+            $('.btnUpdateCls').show();
+            $('.btnDeleteCls').show();
+            $('.btnPostCls').hide();
+            $('.btnSaveCls').hide();
+            $('.btnRemoveCls').hide();
+        }else if($('btnCreateCls').style.display==="show"&&$('btnUpdateCls').style.display==="show"&&$('btnDeleteCls').style.display==="show"){
+            $('.editProvidersDiv').hide();
+            $('#btnEdit').show();
+        }
+        
+    })
+
+    $('.btnClearCls').on('click', function(){
+        $('#id').val('');
+        $('#firstName').val('');
+        $('#lastName').val('');
+        $('#profession').val('');
+        $('#facility').val('');
+        $('#languages').val('');
+        $('#fac_phone').val('');
+        $('#addressId').val('');
+        $('#genderId').val('');
+    })
+
     $(document).on('click', '.blah', function () {
         if (this.childNodes[5].childNodes[1].style.display === 'none' && this.childNodes[3].childNodes[1].style.display === 'none') {
             this.childNodes[5].childNodes[1].style.display = 'block';
@@ -31,7 +83,7 @@ $(document).ready(function(){
         }
     });
 
-    $('.btnUpdateCls').on('click', function () {
+    $('.btnSaveCls').on('click', function () {
         alert('Getting ready to do Ajax call.');
         id = $('#id').val();
         firstName = $('#firstName').val();
@@ -62,7 +114,7 @@ $(document).ready(function(){
         console.log('Done updating professional.');
     };
 
-    $('.btnCreateCls').on('click', function(){
+    $('.btnPostCls').on('click', function(){
         alert('Getting ready to post data to the DB.')
         prof_firstName = $('#firstName').val();
         prof_lastName = $('#lastName').val();
@@ -92,7 +144,7 @@ $(document).ready(function(){
         console.log('Done posting professional.')
     }
 
-    $(".btnDeleteCls").on('click', function(){
+    $(".btnRemoveCls").on('click', function(){
         alert('Getting ready to delete from DB.');
         window.location.href="http://localhost:8080/AdminChanges";
         id= $('#id').val();
@@ -113,4 +165,6 @@ $(document).ready(function(){
         console.log('Done deleting professional.');
     }
 
+
+    
 })

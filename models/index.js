@@ -1,16 +1,29 @@
 "use strict";
-
+var dotenv = require('dotenv').config()
 var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
 var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
-var config = require(__dirname + "/../config/config.json")[env];
+console.log("The Environment is: " + env);
+var config = require(__dirname + '/../config/config.js')[env];
 var db = {};
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+if (env==="production") {
+  console.log("Using PROD STUFF");
+  //var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  //var sequelize = new Sequelize(config.process.env[config.use_env_variable]);
+  console.log("Using Environment Variables");
+  console.log("User Name: " + process.env.MYSQL_PROD_USER);
+  console.log("Database: " + process.env.MYSQL_PROD_DBNAME);
+  console.log("Host: " + process.env.MYSQL_PROD_HOST);
+  console.log("THE DATABSE: " + config.database);
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
 } else {
+  console.log("Using Environment Variables");
+  console.log("User Name: " + process.env.MYSQL_DEV_USER);
+  console.log("Database: " + process.env.MYSQL_DEV_DBNAME);
+  console.log("Host: " + process.env.MYSQL_DEV_HOST);
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 

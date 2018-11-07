@@ -1,7 +1,7 @@
 // Import packages and their necessary functionalities
 const express = require('express');
 const path = require('path');
-const Sequelize = require('sequilize');
+const db = require('./models');
 
 
 // Give app access to express package
@@ -27,20 +27,20 @@ require('./routes/html-routes.js')(myApp);
 
 
 // Starts server on the predefined PORT
-sequelize.sync().then(function () {
+db.sequelize.sync().then(function () {
   console.log("Db is synced");
   myApp.listen(PORT, function () {
     console.log('App listening on PORT ' + PORT);
   });
 
 
-  
-  // View the table created using sequelize
-  Professional.findAll({}).
+
+  //View the table created using sequelize
+  db.Professional.findAll({}).
     then(function (rows) {
-   //   console.log(JSON.stringify(rows, null, 2));
+      //   console.log(JSON.stringify(rows, null, 2));
     }).catch(function (error) {
       console.log('Error', error);
     })
-  })
-  
+});
+
