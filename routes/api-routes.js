@@ -22,13 +22,13 @@ module.exports = function (myApp) {
         });
     });
 
-    myApp.post('/api/PostProfessional/:prof_firstName&:prof_lastName&:profession&:workplace&:languages&:fac_phone&:address&:gender', function (req, res) {
+    myApp.post('/api/PostProfessional/:prof_firstName&:prof_lastName&:profession&:workplace&:languages&:fac_phone&:address&:gender&:healthcare', function (req, res) {
         console.log("Posted new data!");
-        let postProfessionalQuery = "INSERT INTO Professionals(prof_firstName, prof_lastName, profession, workplace, languages, fac_phone, address, gender) VALUES" + '(:prof_firstName, :prof_lastName, :profession, :workplace, :languages, :fac_phone, :address, :gender)';
+        let postProfessionalQuery = "INSERT INTO Professionals(prof_firstName, prof_lastName, profession, workplace, languages, fac_phone, address, gender, healthcare) VALUES" + '(:prof_firstName, :prof_lastName, :profession, :workplace, :languages, :fac_phone, :address, :gender, :healthcare)';
         db.sequelize.query(postProfessionalQuery,
             {
                 replacements: {
-                    prof_firstName: req.params.prof_firstName, prof_lastName: req.params.prof_lastName, profession: req.params.profession, workplace: req.params.workplace, languages: req.params.languages, fac_phone: req.params.fac_phone, address: req.params.address, gender: req.params.gender
+                    prof_firstName: req.params.prof_firstName, prof_lastName: req.params.prof_lastName, profession: req.params.profession, workplace: req.params.workplace, languages: req.params.languages, fac_phone: req.params.fac_phone, address: req.params.address, gender: req.params.gender, healthcare: req.params.healthcare
                 },
                 type: db.sequelize.QueryTypes.INSERT
             }
@@ -43,15 +43,15 @@ module.exports = function (myApp) {
 
 
     // Update existing dealer in db 
-    myApp.put('/api/UpdateProfessional/:id&:prof_firstName&:prof_lastName&:profession&:workplace&:languages&:fac_phone&:address&:gender', function (req, res) {
+    myApp.put('/api/UpdateProfessional/:id&:prof_firstName&:prof_lastName&:profession&:workplace&:languages&:fac_phone&:address&:gender&:healthcare', function (req, res) {
         console.log("Made it to update backend");
-        let updateProfessionalQuery = 'UPDATE Professionals SET prof_firstName = :prof_firstName, profession=:profession, workplace=:workplace, languages=:languages, fac_phone=:fac_phone, address=:address, gender=:gender ' +
+        let updateProfessionalQuery = 'UPDATE Professionals SET prof_firstName = :prof_firstName, profession=:profession, workplace=:workplace, languages=:languages, fac_phone=:fac_phone, address=:address, gender=:gender, healthcare=:healthcare ' +
             'WHERE id=:id';
         db.sequelize.query(updateProfessionalQuery,
             {
                 replacements: {
                     id: req.params.id, prof_firstName: req.params.prof_firstName, prof_lastName: req.params.prof_lastName, profession: req.params.profession, workplace: req.params.workplace, languages: req.params.languages,
-                    fac_phone: req.params.fac_phone, address: req.params.address, gender: req.params.gender
+                    fac_phone: req.params.fac_phone, address: req.params.address, gender: req.params.gender, healthcare: req.params.healthcare
                 },
                 type: db.sequelize.QueryTypes.UPDATE
             }

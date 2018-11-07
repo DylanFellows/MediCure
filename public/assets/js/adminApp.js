@@ -15,6 +15,7 @@ $(document).ready(function(){
     var fac_phone = '';
     var address = '';
     var gender = '';
+    var healthcare = '';
 
     $('#btnEdit').on('click', function(){
         $('.editProvidersDiv').show();
@@ -46,19 +47,15 @@ $(document).ready(function(){
         $('.btnCreateCls').hide();
     })
 
-    $('.btnCancelCls').on('click', function(){
-        if($('.btnCreateCls').style.display==="none"||$('.btnDeleteCls').style.display==='none'||$('.btnUpdateCls').style.display==="none"){
+    $('.btnCancel').on('click', function(){
             $('.btnCreateCls').show();
             $('.btnUpdateCls').show();
             $('.btnDeleteCls').show();
             $('.btnPostCls').hide();
             $('.btnSaveCls').hide();
             $('.btnRemoveCls').hide();
-        }else if($('.btnCreateCls').style.display==="show"&&$('.btnUpdateCls').style.display==="show"&&$('btnDeleteCls').style.display==="show"){
             $('.editProvidersDiv').hide();
             $('#btnEdit').show();
-        }
-        
     })
 
     $('.btnClearCls').on('click', function(){
@@ -71,15 +68,18 @@ $(document).ready(function(){
         $('#fac_phone').val('');
         $('#addressId').val('');
         $('#genderId').val('');
+        $('#healthcareId').val('');
     })
 
     $(document).on('click', '.blah', function () {
-        if (this.childNodes[5].childNodes[1].style.display === 'none' && this.childNodes[3].childNodes[1].style.display === 'none') {
+        if (this.childNodes[5].childNodes[1].style.display === 'none' && this.childNodes[3].childNodes[1].style.display === 'none' && this.childNodes[7].childNodes[1].style.display === 'none') {
             this.childNodes[5].childNodes[1].style.display = 'block';
             this.childNodes[3].childNodes[1].style.display = 'block';
+            this.childNodes[7].childNodes[1].style.display = 'block';
         } else {
             this.childNodes[5].childNodes[1].style.display = 'none';
             this.childNodes[3].childNodes[1].style.display = 'none';
+            this.childNodes[7].childNodes[1].style.display = 'none';
         }
     });
 
@@ -94,6 +94,7 @@ $(document).ready(function(){
         fac_phone = $('#fac_phone').val();
         address = $('#addressId').val();
         gender = $('#genderId').val();
+        healthcare = $('#healthcareId').val();
         $.when(ajaxUpdateProfessional()).done(function (a1) {
             console.log("Inside the .when GET function.")
             window.location.href="http://localhost:8080/AdminChanges";
@@ -104,7 +105,7 @@ $(document).ready(function(){
         console.log('Inside of Ajax.')
         return $.ajax({
             type: "PUT",
-            url: `/api/UpdateProfessional/${id}&${firstName}&${lastName}&${profession}&${facility}&${languages}&${fac_phone}&${address}&${gender}`,
+            url: `/api/UpdateProfessional/${id}&${firstName}&${lastName}&${profession}&${facility}&${languages}&${fac_phone}&${address}&${gender}&${healthcare}`,
             datatype: "json",
             success: updateProfessional
         });
@@ -124,6 +125,7 @@ $(document).ready(function(){
         fac_phone = $('#fac_phone').val();
         address = $('#addressId').val();
         gender = $('#genderId').val();
+        healthcare = $('#healthcareId').val();
         $.when(ajaxPostProfessional()).done(function(a1){
             console.log('Inside the .when POST function.')
             window.location.href="http://localhost:8080/AdminChanges";
@@ -134,7 +136,7 @@ $(document).ready(function(){
         console.log('Inside of POST AJAX.');
         return $.ajax({
             type: "POST",
-            url: `/api/PostProfessional/${prof_firstName}&${prof_lastName}&${profession}&${facility}&${languages}&${fac_phone}&${address}&${gender}`,
+            url: `/api/PostProfessional/${prof_firstName}&${prof_lastName}&${profession}&${facility}&${languages}&${fac_phone}&${address}&${gender}&${healthcare}`,
             datatype: "json",
             success: postProfessional
         });

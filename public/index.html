@@ -178,7 +178,11 @@
               <a target="new" ng-href="{{myVar}}{{provider.address}}">{{provider.address}}</a><br>{{provider.fac_phone}}<br>{{provider.languages}}</div>
         </td>
 
-        <td class="text-center">{{provider.workplace}}</td>
+        <td class="text-center">{{provider.workplace}}
+          <div style="display: none;">
+            <p style="color: blue; text-decoration: underline;">Healthcare</p>{{provider.healthcare}}
+          </div> 
+        </td>
 
       </tr>
 

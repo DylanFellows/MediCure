@@ -86,7 +86,7 @@
         <td style="display:none;">{{provider.id}}</td>
 
         <td class="text-center">{{provider.prof_firstName}}&nbsp&nbsp{{provider.prof_lastName}}
-          <div id="" style="display: none;">
+          <div style="display: none;">
             <p style="color: blue; text-decoration: underline;">Gender</p>{{provider.gender}}
           </div>
         </td>
@@ -96,7 +96,11 @@
             <a target="new" ng-href="{{myVar}}{{provider.address}}">{{provider.address}}</a><br>{{provider.fac_phone}}<br>{{provider.languages}}</div>
         </td>
 
-        <td class="text-center">{{provider.workplace}}</td>
+        <td class="text-center">{{provider.workplace}}
+          <div style="display: none;">
+            <p style="color: blue; text-decoration: underline;">Healthcare</p>{{provider.healthcare}}
+          </div> 
+        </td>
 
       </tr>
 
@@ -127,6 +131,8 @@
     <input id="addressId" ng-model="address" size="40" maxlength="40" placeholder="Provider Address" autocomplete='off' /><br><br>
     Gender:
     <input id="genderId" ng-model="gender" size="40" maxlength="40" placeholder="Provider Gender" autocomplete='off' /><br><br>
+    Healthcare:
+    <input id="healthcareId" ng-model="healthcare" size="40" maxlength="40" placeholder="Provider Healthcare" autocomplete='off' /><br><br>
     <button class="btnCreateCls btn btn-primary">Create</button>
     <button class="btnPostCls btn btn-primary" style="display: none;">Post</button>
     <button class="btnUpdateCls btn btn-success">Update</button>

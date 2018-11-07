@@ -32,6 +32,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
+        healthcare: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         createdAt: {
           allowNull: true,
           type: DataTypes.DATE

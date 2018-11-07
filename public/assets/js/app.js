@@ -33,13 +33,15 @@ $(document).ready(function () {
         window.location.href = 'http://localhost:8080/AdminChanges';
     })
 
-    $(document).on('click', ".blah", function () {
-        if (this.childNodes[5].childNodes[1].style.display === 'none' && this.childNodes[3].childNodes[1].style.display === 'none') {
+    $(document).on('click', '.blah', function () {
+        if (this.childNodes[5].childNodes[1].style.display === 'none' && this.childNodes[3].childNodes[1].style.display === 'none' && this.childNodes[7].childNodes[1].style.display === 'none') {
             this.childNodes[5].childNodes[1].style.display = 'block';
             this.childNodes[3].childNodes[1].style.display = 'block';
+            this.childNodes[7].childNodes[1].style.display = 'block';
         } else {
             this.childNodes[5].childNodes[1].style.display = 'none';
             this.childNodes[3].childNodes[1].style.display = 'none';
+            this.childNodes[7].childNodes[1].style.display = 'none';
         }
     });
 });
