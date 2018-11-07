@@ -47,14 +47,14 @@ $(document).ready(function(){
     })
 
     $('.btnCancelCls').on('click', function(){
-        if($('btnCreateCls').style.display==="show"||$('btnSaveCls').style.display==='show'||$('btnRemoveCls').style.display==="show"){
+        if($('.btnCreateCls').style.display==="none"||$('.btnDeleteCls').style.display==='none'||$('.btnUpdateCls').style.display==="none"){
             $('.btnCreateCls').show();
             $('.btnUpdateCls').show();
             $('.btnDeleteCls').show();
             $('.btnPostCls').hide();
             $('.btnSaveCls').hide();
             $('.btnRemoveCls').hide();
-        }else if($('btnCreateCls').style.display==="show"&&$('btnUpdateCls').style.display==="show"&&$('btnDeleteCls').style.display==="show"){
+        }else if($('.btnCreateCls').style.display==="show"&&$('.btnUpdateCls').style.display==="show"&&$('btnDeleteCls').style.display==="show"){
             $('.editProvidersDiv').hide();
             $('#btnEdit').show();
         }
