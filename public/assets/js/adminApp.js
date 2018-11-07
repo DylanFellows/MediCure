@@ -84,7 +84,6 @@ $(document).ready(function(){
     });
 
     $('.btnSaveCls').on('click', function () {
-        alert('Getting ready to do Ajax call.');
         id = $('#id').val();
         firstName = $('#firstName').val();
         lastName = $('#lastName').val();
@@ -102,7 +101,6 @@ $(document).ready(function(){
     });
 
     function ajaxUpdateProfessional() {;
-        console.log('Inside of Ajax.')
         return $.ajax({
             type: "PUT",
             url: `/api/UpdateProfessional/${id}&${firstName}&${lastName}&${profession}&${facility}&${languages}&${fac_phone}&${address}&${gender}&${healthcare}`,
@@ -116,7 +114,6 @@ $(document).ready(function(){
     };
 
     $('.btnPostCls').on('click', function(){
-        alert('Getting ready to post data to the DB.')
         prof_firstName = $('#firstName').val();
         prof_lastName = $('#lastName').val();
         profession = $('#profession').val();
